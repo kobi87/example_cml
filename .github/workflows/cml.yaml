@@ -13,7 +13,10 @@ jobs:
           pip install -r requirements.txt
           python train.py
           
-          echo "MODEL METRICS"
+          echo "## Model metrics"> report.md
           cat metrics.txt >> report.md
+          
+          echo "## Confusion matrix">> report.md
           cml-publish confusion_matrix.png --md >> report.md
+          
           cml-send-comment report.md
